@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · one ticket, two problems'
 owner: support desk
-status: living
+status: closed
 reviewed: 2026-10-28
 signature: Ken
 ---
@@ -14,12 +14,13 @@ signature: Ken
   const signature = 'Ken';
 </script>
 
-[#4471](/kb/incidents/4471) is marked known, with one fix queued. The reports in it are not one bug.
-They are two problems that both look like "the date is wrong". The desk merged them by subject line
+[#4471](/kb/incidents/4471) was closed on 5 October. The reports in it were not one bug.
+They were two problems that both looked like "the date is wrong". The desk merged them by subject line
 ([decision 0001](/kb/decisions/0001-dedupe-by-subject)), and the subject lines matched.
 
-<Callout kind="warn">
-The fix on #4471 closes one of the two problems. The other stays open and keeps getting reports.
+<Callout>
+Engineering update, 5 October. `parser`: fixed (parse dd/mm for eu locales). `hint`: won't fix, because the
+booking-v3 form was retired.
 </Callout>
 
 ## What is in the ticket
@@ -29,18 +30,18 @@ The fix on #4471 closes one of the two problems. The other stays open and keeps 
 ## The two problems
 
 1. **`parser`.** The shared parser reads every date month first. A tenant whose people write the day first
-   gets a month flip. This is the problem the fix on #4471 covers. A few reports read as a one-day move;
+   gets a month flip. Fixed: the parser now reads dd/mm for eu locales. A few reports read as a one-day move;
    the table counts them here and footnotes them.
 2. **`hint`.** Tenants on `booking-v3` get the hint `MM/DD/YYYY` under the date field. Their people type
    what the hint says, month first, and the form reads it day first. A different bug, in the form, not the
-   parser. It only shows up in the `form` channel, and it has no ticket of its own yet.
+   parser. It only showed up in the `form` channel. Won't fix: booking-v3 was retired, so the hint is gone with the form.
 
 Intake's tag comes from the reporter's browser and is a guess. The table shows how often it disagrees with
 the cause. Use the tenant's locale and booking form.
 
 ## What to do
 
-- File one ticket for each problem. Give each its report count.
-- Do not close the `hint` reports when the `parser` fix ships.
+- A big ticket can hide more than one problem. Count each problem, and file one ticket for each.
+- A fix on one problem does not close the other. Check each against the engineering update before you close it.
 
 <RenderStamp {signature} />
