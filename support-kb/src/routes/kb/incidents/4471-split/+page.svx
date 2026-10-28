@@ -4,14 +4,14 @@ title: '#4471 · one ticket, two problems'
 owner: support desk
 status: closed
 reviewed: 2026-10-28
-signature: Ken
+signature: v1.eyJzdWIiOiIxMDUzMiIsImF1ZCI6ImNoYWxsZW5nZTp3aGF0LWl0LXNob3dzIiwiaWF0IjoxNzkzMjEzNDI4LCJleHAiOjE3OTMyOTk4Mjh9.EFGX9G3KPQqMLMEfaiA5VoqYFwlBxvIxAtM6N5kmgbs
 ---
 
 <script>
   import CauseTable from '#lib/kb/CauseTable.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
   import Callout from '#lib/kb/Callout.svelte';
-  const signature = 'Ken';
+  const signature = 'v1.eyJzdWIiOiIxMDUzMiIsImF1ZCI6ImNoYWxsZW5nZTp3aGF0LWl0LXNob3dzIiwiaWF0IjoxNzkzMjEzNDI4LCJleHAiOjE3OTMyOTk4Mjh9.EFGX9G3KPQqMLMEfaiA5VoqYFwlBxvIxAtM6N5kmgbs';
 </script>
 
 [#4471](/kb/incidents/4471) was closed on 5 October. The reports in it were not one bug.
