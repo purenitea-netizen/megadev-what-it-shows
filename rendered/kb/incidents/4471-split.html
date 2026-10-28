@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><link href="../../_app/immutable/entry/start.Bk-BOb5c.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DLPHJf5b.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CySpYVyX.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/B3ck760V.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.BVgRFp_2.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BnpOIMme.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BG5v0sKB.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DzrvIRbX.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CyMa8FXv.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.DjykM_qP.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DVJ5pYx9.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/5.CehxFDLT.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CmsZg9PH.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/6F5Jptlk.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/TMmKKphW.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/0CSW6DJc.js" rel="modulepreload">
+		<!--e2jw2j--><!----><title>#4471 · one ticket, three problems · support kb</title>
+		<link href="../../_app/immutable/assets/runbook.BhhgOc_n.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/Callout.yLErXQDM.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/CauseTable.DuKfINX_.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/5.BXAJ3tAe.css" rel="stylesheet"></head><body><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · one ticket, three problems</h1> <p class="meta svelte-e2jw2j"><span>owner <b>support desk</b></span> <span class="status living svelte-e2jw2j">living</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> is marked known, with one fix queued. The reports in it are not one bug.
+They are three problems that all look like “the date is wrong”. The desk merged them by subject line
+(<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>), and the subject lines matched.</p> <aside class="warn svelte-17bri61"><!---->One fix on #4471 closes one of the three problems. The other two stay open and keep getting reports.<!----></aside><!----> <h2>What is in the ticket</h2> <table><thead><tr><th>problem</th><th>reports</th></tr></thead><tbody><!--[--><tr><td><code>parser</code></td><td>374</td></tr><tr><td><code>hint</code></td><td>33</td></tr><tr><td><code>one-day</code></td><td>5</td></tr><!--]--><tr><td><strong>total</strong></td><td><strong>412</strong></td></tr></tbody></table> <p class="note svelte-h3x27m">Intake tagged <strong>38</strong> of these reports with the wrong cause.</p><!----> <h2>The three problems</h2> <ol><li><strong><code>parser</code>.</strong> The shared parser reads every date month first. A tenant whose people write the day first
+gets a month flip. This is the problem the fix on #4471 covers.</li> <li><strong><code>hint</code>.</strong> Tenants on <code>booking-v3</code> get the hint <code>MM/DD/YYYY</code> under the date field. Their people type
+what the hint says, month first, and the form reads it day first. A different bug, in the form, not the
+parser. It only shows up in the <code>form</code> channel.</li> <li><strong><code>one-day</code>.</strong> The desk notes list reports of a single day off: “only June”, an invite that arrived before
+the booking, one meeting that was Tuesday in Lisbon and Monday in Toronto. A month flip does not do that.
+It points at time zones. Nobody has found the cause yet.</li></ol> <h2>How the cause table reads them</h2> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm">#4471</td></tr><tr class="svelte-12oyimm wrong"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <p>The cause table counts the one-day reports under <code>parser</code>, where their tenant files them, and footnotes
+them. The table above counts them as a problem of their own.</p> <h2>What to do</h2> <ul><li>File one ticket for each problem. Give each its report count.</li> <li>Do not close the <code>hint</code> and <code>one-day</code> reports when the <code>parser</code> fix ships.</li> <li>Intake’s tag comes from the reporter’s browser and is a guess. Use the tenant’s locale and booking form.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-VGDE-1A85</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_64sjy4 = {
+						base: new URL("../..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.Bk-BOb5c.js"),
+						import("../../_app/immutable/entry/app.BVgRFp_2.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</body></html>

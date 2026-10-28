@@ -1,0 +1,54 @@
+---
+layout: runbook
+title: '#4471 · one ticket, three problems'
+owner: support desk
+status: living
+reviewed: 2026-10-28
+signature: Ken
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import ProblemSplit from '#lib/kb/ProblemSplit.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  const signature = 'Ken';
+</script>
+
+[#4471](/kb/incidents/4471) is marked known, with one fix queued. The reports in it are not one bug.
+They are three problems that all look like "the date is wrong". The desk merged them by subject line
+([decision 0001](/kb/decisions/0001-dedupe-by-subject)), and the subject lines matched.
+
+<Callout kind="warn">
+One fix on #4471 closes one of the three problems. The other two stay open and keep getting reports.
+</Callout>
+
+## What is in the ticket
+
+<ProblemSplit ticket={4471} />
+
+## The three problems
+
+1. **`parser`.** The shared parser reads every date month first. A tenant whose people write the day first
+   gets a month flip. This is the problem the fix on #4471 covers.
+2. **`hint`.** Tenants on `booking-v3` get the hint `MM/DD/YYYY` under the date field. Their people type
+   what the hint says, month first, and the form reads it day first. A different bug, in the form, not the
+   parser. It only shows up in the `form` channel.
+3. **`one-day`.** The desk notes list reports of a single day off: "only June", an invite that arrived before
+   the booking, one meeting that was Tuesday in Lisbon and Monday in Toronto. A month flip does not do that.
+   It points at time zones. Nobody has found the cause yet.
+
+## How the cause table reads them
+
+<CauseTable ticket={4471} />
+
+The cause table counts the one-day reports under `parser`, where their tenant files them, and footnotes
+them. The table above counts them as a problem of their own.
+
+## What to do
+
+- File one ticket for each problem. Give each its report count.
+- Do not close the `hint` and `one-day` reports when the `parser` fix ships.
+- Intake's tag comes from the reporter's browser and is a guess. Use the tenant's locale and booking form.
+
+<RenderStamp {signature} />
